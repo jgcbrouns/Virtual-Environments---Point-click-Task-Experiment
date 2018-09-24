@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class InteractionListener : MonoBehaviour
 {
@@ -26,9 +27,27 @@ public class InteractionListener : MonoBehaviour
         CameraManager = CameraManagerObject.GetComponent<CameraManagerScript>();
 
         InputFieldJitter.onValueChanged.AddListener(delegate { InputFieldsChangeCheck(); });
-        InputFieldLatency.onValueChanged.AddListener(delegate { InputFieldsChangeCheck(); });
+        InputFieldLatency.onValueChanged.AddListener(delegate { InputFieldLatencyChange(); });
         InputFieldRadius.onValueChanged.AddListener(delegate { InputFieldsChangeCheck(); });
         InputFIeldNumberOfObjects.onValueChanged.AddListener(delegate { InputFieldsChangeCheck(); });
+    }
+
+    void InputFieldLatencyChange()
+    {
+        int LatencyValue = 0;
+        //Try to get parameters, if exist
+        try
+        {
+            LatencyValue = Int32.Parse(InputFieldLatency.text);
+            CameraManager.cameraLag = LatencyValue;
+
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Problem with parsing: " + ex);
+            // Put default values;
+            LatencyValue = 0;
+        }
     }
 
     void InputFieldsChangeCheck()
@@ -39,7 +58,6 @@ public class InteractionListener : MonoBehaviour
         InitializerScript.createEnvironment();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("SwitchCamera"))

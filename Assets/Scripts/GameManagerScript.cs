@@ -20,8 +20,8 @@ public class GameManagerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        ReadValues();
-        //InitializerScript.createEnvironment();
+        this.ReadValues();
+        InitializerScript.createEnvironment();
 	}
 
     public void ReadValues()
@@ -39,19 +39,6 @@ public class GameManagerScript : MonoBehaviour {
             Debug.Log("Problem with parsing: "+ ex);
             // Put default values;
             JitterValue = defaultValue;
-        }
-
-        //Try to get parameters, if exist
-        try
-        {
-            LatencyValue = Int32.Parse(InputFieldLatency.text);
-
-        }
-        catch (Exception ex)
-        {
-            Debug.Log("Problem with parsing: " + ex);
-            // Put default values;
-            LatencyValue = defaultValue;
         }
 
         //Try to get parameters, if exist

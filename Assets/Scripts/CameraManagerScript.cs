@@ -10,7 +10,7 @@ public class CameraManagerScript : MonoBehaviour {
     public Camera VRSimulatorCamera;
 
     List<Vector3> prevRotations = new List<Vector3>();
-    int cameraLag = 0;
+    public int cameraLag = 0;
     Vector3 rotateValue;
 
     // Use this for initialization

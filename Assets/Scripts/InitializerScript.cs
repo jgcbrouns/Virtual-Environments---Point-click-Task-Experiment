@@ -9,12 +9,18 @@ public class InitializerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		collector = new GameObject("Collector");
-        collector.name = "Collector";
+        //For use with object-oriented approach (right now everything is static)
+		//collector = new GameObject("Collector");
+        //collector.name = "Collector";
     }
 
     internal static void createEnvironment()
     {
+        if(collector == null)
+        {
+            collector = new GameObject("Collector");
+            collector.name = "Collector";
+        }
         Debug.Log("Creating environment");
         /* Definition of circle:
          * (x−h)^2+(y−k)^2=r^2
