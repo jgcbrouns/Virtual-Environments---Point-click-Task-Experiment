@@ -51,7 +51,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             Debug.Log("Problem with parsing: " + ex);
             // Put default values;
-            RadiusValue = defaultValue;
+            RadiusValue = 17;
         }
 
         //Try to get parameters, if exist
@@ -64,7 +64,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             Debug.Log("Problem with parsing: " + ex);
             // Put default values;
-            NumberOfObjectsValue = defaultValue-1;
+            NumberOfObjectsValue = 5;
         }
     }
 

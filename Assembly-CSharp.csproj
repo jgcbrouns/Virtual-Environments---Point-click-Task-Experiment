@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraManagerScript.cs" />
+    <Compile Include="Assets\Scripts\CSVWriter.cs" />
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\InitializerScript.cs" />
     <Compile Include="Assets\Scripts\InteractionListener.cs" />

@@ -23,6 +23,9 @@ public class CameraManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         MoveCamera();
+
+        //Camera mycam = GetComponent<Camera>();
+//        VRSimulatorCamera.transform.LookAt(VRSimulatorCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, VRSimulatorCamera.nearClipPlane)), Vector3.up);
     }
 
     private void MoveCamera()
@@ -39,13 +42,16 @@ public class CameraManagerScript : MonoBehaviour {
             rotateValue = rotateValue - new Vector3(0, speed * Time.deltaTime, 0);
         }
 
-        prevRotations.Add(rotateValue);
+
+        prevRotations.Add(new Vector3(Input.mousePosition.x, Input.mousePosition.y, VRSimulatorCamera.nearClipPlane));
         if (prevRotations.Count > cameraLag)
         {
             Vector3 value = prevRotations[0];
             prevRotations.RemoveAt(0);
 
-            VRSimulatorCamera.transform.eulerAngles = value;
+            //VRSimulatorCamera.transform.eulerAngles = value;
+            VRSimulatorCamera.transform.LookAt(VRSimulatorCamera.ScreenToWorldPoint(value), Vector3.up);
+
         }
     }
 

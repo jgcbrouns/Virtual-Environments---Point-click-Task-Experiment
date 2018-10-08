@@ -11,6 +11,9 @@ public class InteractionListener : MonoBehaviour
     public InputField InputFieldRadius;
     public InputField InputFIeldNumberOfObjects;
 
+    public Text TextExperimentStarted;
+    public Text TextExperimentEnded;
+
     GameObject GameManagerObject;
     GameManagerScript GameManager;
 
@@ -64,5 +67,24 @@ public class InteractionListener : MonoBehaviour
         {
             CameraManager.ToggleCammera();
         }
+
+        if (Input.GetButtonDown("EndExperiment"))
+        {
+            TextExperimentEnded.gameObject.SetActive(true);
+            Invoke("HideStartEndLabels", 2);//this will happen after 2 seconds
+            CSVWriter.Save();
+        }
+
+        if (Input.GetButtonDown("StartExperiment"))
+        {
+            TextExperimentStarted.gameObject.SetActive(true);
+            Invoke("HideStartEndLabels", 2);//this will happen after 2 seconds
+        }
+    }
+
+    void HideStartEndLabels()
+    {
+        TextExperimentStarted.gameObject.SetActive(false);
+        TextExperimentEnded.gameObject.SetActive(false);
     }
 }
